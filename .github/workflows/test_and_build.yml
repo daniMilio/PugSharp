@@ -3,7 +3,6 @@ on:
   push:
     branches:
     - main
-    - develop
     tags: [ v**]
     paths:
     - '**'
@@ -13,7 +12,6 @@ on:
     types: [opened, synchronize, reopened]
     branches:
     - main
-    - develop
     - 'feature/**'
     paths:
     - '**'
