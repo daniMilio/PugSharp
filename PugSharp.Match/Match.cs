@@ -267,6 +267,8 @@ public class Match : IDisposable
 
     private void StartMatch()
     {
+        string configFile;
+
         if (MatchInfo == null)
         {
             _Logger.LogError("Can not start match without a matchInfo!");
@@ -279,8 +281,31 @@ public class Match : IDisposable
         // End warmup
         _CsServer.EndWarmup();
 
-        // Load live config
-        _CsServer.LoadAndExecuteConfig("live.cfg");
+        // Selecting config
+        switch (MatchInfo.Config.PlayersPerTeam)
+        {
+            case 1:
+                configFile = "1v1.cfg";
+                break;
+            case 2:
+                configFile = "2v2.cfg";
+                break;
+            case 3:
+                configFile = "3v3.cfg";
+                break;
+            case 4:
+                configFile = "4v4.cfg";
+                break;
+            case 5:
+                configFile = "5v5.cfg";
+                break;
+            default:
+                configFile = "live.cfg";
+                break;
+        }
+
+        // Loading config
+        _CsServer.LoadAndExecuteConfig(configFile);
 
         // Restart Game to reset everything
         _CsServer.RestartGame();
