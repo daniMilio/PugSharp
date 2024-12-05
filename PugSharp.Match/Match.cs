@@ -306,6 +306,7 @@ public class Match : IDisposable
 
         // Loading config
         _CsServer.LoadAndExecuteConfig(configFile);
+        _Logger.LogInformation("Config {config} loaded.", configFile);
 
         // Restart Game to reset everything
         _CsServer.RestartGame();
