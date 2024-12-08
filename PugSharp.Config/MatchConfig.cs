@@ -34,6 +34,8 @@ public class MatchConfig
     [JsonPropertyName("vote_timeout")]
     public long VoteTimeout { get; init; } = 60000;
 
+    private string? _eventulaApistatsUrl;
+
     [JsonPropertyName("eventula_apistats_url")]
     public string? EventulaApistatsUrl
     {
@@ -51,6 +53,8 @@ public class MatchConfig
 
     [JsonPropertyName("eventula_apistats_token")]
     public string? EventulaApistatsToken { get; set; }
+
+    private string? _eventulaDemoUploadUrl;
 
     [JsonPropertyName("eventula_demo_upload_url")]
     public string? EventulaDemoUploadUrl
