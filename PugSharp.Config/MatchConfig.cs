@@ -35,13 +35,37 @@ public class MatchConfig
     public long VoteTimeout { get; init; } = 60000;
 
     [JsonPropertyName("eventula_apistats_url")]
-    public string? EventulaApistatsUrl { get; init; }
+    public string? EventulaApistatsUrl
+    {
+        get
+        {
+            // Check if the URL already has 'https://'. If not, prepend it.
+            return string.IsNullOrEmpty(_eventulaApistatsUrl) ? null : (_eventulaApistatsUrl.StartsWith("https://") ? _eventulaApistatsUrl : "https://" + _eventulaApistatsUrl);
+        }
+        init
+        {
+            // Assign the value directly to the backing field
+            _eventulaApistatsUrl = value;
+        }
+    }
 
     [JsonPropertyName("eventula_apistats_token")]
     public string? EventulaApistatsToken { get; set; }
 
     [JsonPropertyName("eventula_demo_upload_url")]
-    public string? EventulaDemoUploadUrl { get; init; }
+    public string? EventulaDemoUploadUrl
+    {
+        get
+        {
+            // Check if the URL already has 'https://'. If not, prepend it.
+            return string.IsNullOrEmpty(_eventulaDemoUploadUrl) ? null : (_eventulaDemoUploadUrl.StartsWith("https://") ? _eventulaDemoUploadUrl : "https://" + _eventulaDemoUploadUrl);
+        }
+        init
+        {
+            // Assign the value directly to the backing field for EventulaDemoUploadUrl
+            _eventulaDemoUploadUrl = value;
+        }
+    }
 
     [JsonPropertyName("allow_suicide")]
     public bool AllowSuicide { get; init; } = true;
